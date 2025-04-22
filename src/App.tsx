@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,7 +18,15 @@ import LabDashboard from "./pages/dashboards/LabDashboard";
 import PharmacistDashboard from "./pages/dashboards/PharmacistDashboard";
 
 // Modules
-import Patients from "./pages/patients/Patients";
+import PatientsPage from "./pages/PatientsPage";
+import AppointmentsPage from "./pages/AppointmentsPage";
+import EMRPage from "./pages/EMRPage";
+import BillingPage from "./pages/BillingPage";
+import StaffPage from "./pages/StaffPage";
+import PharmacyPage from "./pages/PharmacyPage";
+import LabReportsPage from "./pages/LabReportsPage";
+import AnalyticsPage from "./pages/AnalyticsPage";
+import SecurityPage from "./pages/SecurityPage";
 
 const queryClient = new QueryClient();
 
@@ -45,8 +52,16 @@ const App = () => (
               <Route path="/lab-dashboard" element={<LabDashboard />} />
               <Route path="/pharmacist-dashboard" element={<PharmacistDashboard />} />
               
-              {/* Module routes */}
-              <Route path="/patients" element={<Patients />} />
+              {/* Core medical modules */}
+              <Route path="/patients" element={<PatientsPage />} />
+              <Route path="/appointments" element={<AppointmentsPage />} />
+              <Route path="/emr" element={<EMRPage />} />
+              <Route path="/billing" element={<BillingPage />} />
+              <Route path="/staff" element={<StaffPage />} />
+              <Route path="/pharmacy" element={<PharmacyPage />} />
+              <Route path="/lab-reports" element={<LabReportsPage />} />
+              <Route path="/analytics" element={<AnalyticsPage />} />
+              <Route path="/security" element={<SecurityPage />} />
               
               {/* Catch-all route */}
               <Route path="*" element={<NotFound />} />

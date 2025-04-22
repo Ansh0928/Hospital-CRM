@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { UserRole } from '@/types';
@@ -231,24 +230,7 @@ const Login: React.FC = () => {
             </CardContent>
           </Card>
         )}
-        
-        {/* Demo credentials info */}
-        <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600 mb-2">Demo Credentials:</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs">
-            {sampleCredentials.map((cred, index) => (
-              <Button
-                key={index}
-                variant="outline"
-                size="sm"
-                onClick={() => fillCredentials(cred.role as UserRole)}
-                className="text-xs py-1 h-auto"
-              >
-                {cred.role}
-              </Button>
-            ))}
-          </div>
-        </div>
+        {/* Demo credentials info removed */}
       </div>
     </div>
   );
