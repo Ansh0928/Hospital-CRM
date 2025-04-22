@@ -1,5 +1,7 @@
 
 import PageHeader from "@/components/ui/PageHeader";
+import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
 
 const dummyCompliance = [
   { name: "HIPAA", status: "Compliant", color: "text-green-600" },
@@ -25,6 +27,14 @@ const SecurityPage = () => (
             </li>
           ))}
         </ul>
+        <div className="mt-6">
+          <h3 className="font-semibold mb-2">Audit Logs</h3>
+          <ul className="text-sm text-gray-600 space-y-1">
+            <li>2025-04-22: Admin login from new device - IP 192.168.1.22</li>
+            <li>2025-04-20: Password changed for Dr. Smith</li>
+            <li>2025-04-18: Lab report uploaded by Lab Technician</li>
+          </ul>
+        </div>
       </div>
       <div className="md:w-1/2">
         <h2 className="font-semibold mb-2">Security Settings</h2>
@@ -32,13 +42,18 @@ const SecurityPage = () => (
           {dummySettings.map((setting) => (
             <li key={setting.name} className="mb-2 flex items-center gap-2">
               <span>{setting.name}:</span>
-              <span className="font-bold">{setting.enabled ? "Enabled" : "Disabled"}</span>
+              <Switch checked={setting.enabled} />
             </li>
           ))}
         </ul>
+        <div className="mt-6">
+          <h3 className="font-semibold mb-2">Data Privacy</h3>
+          <p className="text-gray-600 text-sm">
+            Your data is encrypted according to best practices, maintained for HIPAA & GDPR compliance, and access is strictly controlled.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 );
-
 export default SecurityPage;

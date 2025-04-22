@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -25,7 +24,6 @@ const SideNav: React.FC = () => {
     return location.pathname === path;
   };
   
-  // Define menu items based on user role
   const getMenuItems = () => {
     const role = user?.role;
     const dashboardPath = `/${role}-dashboard`;
@@ -99,20 +97,17 @@ const SideNav: React.FC = () => {
   return (
     <aside className="w-64 bg-white border-r border-gray-200 hidden md:block">
       <div className="flex flex-col h-full">
-        {/* Logo */}
         <div className="h-16 flex items-center justify-center border-b border-gray-200">
           <h1 className="text-xl font-bold text-medical-primary">
-            VitaCare
+            Hospital Management System
           </h1>
         </div>
         
-        {/* User Role */}
         <div className="px-6 py-4 border-b border-gray-200">
           <p className="text-sm text-gray-500">Logged in as</p>
           <p className="font-medium text-medical-dark capitalize">{user?.role}</p>
         </div>
         
-        {/* Navigation */}
         <nav className="flex-1 px-4 py-4 overflow-y-auto">
           <ul className="space-y-1">
             {getMenuItems().map((item, index) => (

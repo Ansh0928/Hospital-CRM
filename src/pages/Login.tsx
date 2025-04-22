@@ -33,7 +33,7 @@ const Login: React.FC = () => {
   
   const { login, resetPassword, authState } = useAuth();
   const { error } = authState;
-  
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -44,51 +44,31 @@ const Login: React.FC = () => {
       setIsLoading(false);
     }
   };
-  
+
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
     try {
       const success = await resetPassword(resetEmail);
-      if (success) {
-        setResetSuccess(true);
-      }
+      if (success) setResetSuccess(true);
     } finally {
       setIsLoading(false);
     }
   };
-  
+
   const toggleResetForm = () => {
     setShowResetForm(!showResetForm);
     setResetSuccess(false);
   };
-  
-  // Sample login credentials helper
-  const sampleCredentials = [
-    { role: 'admin', email: 'admin@vitacare.com', password: 'admin123' },
-    { role: 'doctor', email: 'doctor@vitacare.com', password: 'doctor123' },
-    { role: 'staff', email: 'staff@vitacare.com', password: 'staff123' },
-    { role: 'lab', email: 'lab@vitacare.com', password: 'lab123' },
-    { role: 'pharmacist', email: 'pharmacist@vitacare.com', password: 'pharma123' },
-  ];
-  
-  const fillCredentials = (roleType: UserRole) => {
-    const credential = sampleCredentials.find(cred => cred.role === roleType);
-    if (credential) {
-      setEmail(credential.email);
-      setPassword(credential.password);
-      setRole(roleType as UserRole);
-    }
-  };
-  
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-medical-blue p-4">
       <div className="w-full max-w-md">
         {!showResetForm ? (
           <Card className="w-full">
             <CardHeader className="space-y-1">
-              <CardTitle className="text-2xl font-bold text-center">VitaCare Medical System</CardTitle>
+              <CardTitle className="text-2xl font-bold text-center">Hospital Management System</CardTitle>
               <CardDescription className="text-center">
                 Enter your credentials to access your account
               </CardDescription>
@@ -100,16 +80,12 @@ const Login: React.FC = () => {
                     <AlertDescription>{error}</AlertDescription>
                   </Alert>
                 )}
-                
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="role">Role</Label>
                     <Select 
                       value={role} 
-                      onValueChange={(value) => {
-                        setRole(value as UserRole);
-                        fillCredentials(value as UserRole);
-                      }}
+                      onValueChange={(value) => setRole(value as UserRole)}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select a role" />
@@ -123,7 +99,6 @@ const Login: React.FC = () => {
                       </SelectContent>
                     </Select>
                   </div>
-                  
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <Input
@@ -135,7 +110,6 @@ const Login: React.FC = () => {
                       required
                     />
                   </div>
-                  
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <Label htmlFor="password">Password</Label>
@@ -155,7 +129,6 @@ const Login: React.FC = () => {
                       required
                     />
                   </div>
-                  
                   <Button type="submit" className="w-full" disabled={isLoading}>
                     {isLoading ? 'Signing in...' : 'Sign In'}
                   </Button>
@@ -200,7 +173,6 @@ const Login: React.FC = () => {
                       <AlertDescription>{error}</AlertDescription>
                     </Alert>
                   )}
-                  
                   <div className="space-y-2">
                     <Label htmlFor="reset-email">Email</Label>
                     <Input
@@ -212,7 +184,6 @@ const Login: React.FC = () => {
                       required
                     />
                   </div>
-                  
                   <div className="flex flex-col space-y-2">
                     <Button type="submit" disabled={isLoading}>
                       {isLoading ? 'Sending...' : 'Send Reset Link'}
@@ -230,10 +201,8 @@ const Login: React.FC = () => {
             </CardContent>
           </Card>
         )}
-        {/* Demo credentials info removed */}
       </div>
     </div>
   );
 };
-
 export default Login;
