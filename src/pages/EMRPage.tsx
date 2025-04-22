@@ -38,6 +38,62 @@ const dummyMedications = [
   { prescribedId: "RI24015", medication: "Atorvastatin", start: "15/03/2024", end: "15/04/2024", instructions: "Take after food" },
 ];
 
+const dummyMedicalHistory = [
+  {
+    date: "12/03/2022",
+    diagnosis: "Hypertension",
+    doctor: "Dr. Sarah Johnson",
+    notes: "Started antihypertensive therapy"
+  },
+  {
+    date: "14/10/2023",
+    diagnosis: "Type 2 Diabetes",
+    doctor: "Dr. David Lee",
+    notes: "Lifestyle modification advised"
+  }
+];
+
+const dummyDentalHistory = [
+  {
+    date: "02/06/2022",
+    procedure: "Dental Filling",
+    doctor: "Dr. Emily White",
+    notes: "Composite restoration of upper molar"
+  },
+  {
+    date: "21/11/2023",
+    procedure: "Teeth Cleaning",
+    doctor: "Dr. Rahul Mehta",
+    notes: "Routine cleaning"
+  }
+];
+
+const dummyFamilyHistory = [
+  {
+    relation: "Father",
+    condition: "Hypertension",
+    ageDiagnosed: "52"
+  },
+  {
+    relation: "Mother",
+    condition: "Diabetes",
+    ageDiagnosed: "45"
+  }
+];
+
+const dummySocialHistory = [
+  {
+    habit: "Smoking",
+    status: "Former",
+    details: "Quit in 2021 after 10 years"
+  },
+  {
+    habit: "Alcohol",
+    status: "Occasional",
+    details: "Mostly social"
+  }
+];
+
 export default function EMRPage() {
   const [tab, setTab] = useState<"medications" | "medical" | "dental" | "family" | "social">("medications");
 
@@ -78,6 +134,7 @@ export default function EMRPage() {
             </button>
           ))}
         </nav>
+        {/* Tab Content */}
         {tab === "medications" && (
           <div className="overflow-x-auto mt-4">
             <table className="w-full text-left border-separate min-w-[700px]">
@@ -104,8 +161,97 @@ export default function EMRPage() {
             </table>
           </div>
         )}
-        {tab !== "medications" && (
-          <div className="p-5 text-gray-500">No records for this tab yet.</div>
+        {tab === "medical" && (
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full text-left border-separate min-w-[700px]">
+              <thead>
+                <tr>
+                  <th className="py-3 px-4 bg-gray-50">Date</th>
+                  <th className="py-3 px-4 bg-gray-50">Diagnosis</th>
+                  <th className="py-3 px-4 bg-gray-50">Doctor</th>
+                  <th className="py-3 px-4 bg-gray-50">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dummyMedicalHistory.map((rec, idx) => (
+                  <tr key={idx} className="border-t hover:bg-gray-50 transition">
+                    <td className="py-2 px-4">{rec.date}</td>
+                    <td className="py-2 px-4">{rec.diagnosis}</td>
+                    <td className="py-2 px-4">{rec.doctor}</td>
+                    <td className="py-2 px-4">{rec.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        {tab === "dental" && (
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full text-left border-separate min-w-[700px]">
+              <thead>
+                <tr>
+                  <th className="py-3 px-4 bg-gray-50">Date</th>
+                  <th className="py-3 px-4 bg-gray-50">Procedure</th>
+                  <th className="py-3 px-4 bg-gray-50">Doctor</th>
+                  <th className="py-3 px-4 bg-gray-50">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dummyDentalHistory.map((rec, idx) => (
+                  <tr key={idx} className="border-t hover:bg-gray-50 transition">
+                    <td className="py-2 px-4">{rec.date}</td>
+                    <td className="py-2 px-4">{rec.procedure}</td>
+                    <td className="py-2 px-4">{rec.doctor}</td>
+                    <td className="py-2 px-4">{rec.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        {tab === "family" && (
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full text-left border-separate min-w-[700px]">
+              <thead>
+                <tr>
+                  <th className="py-3 px-4 bg-gray-50">Relation</th>
+                  <th className="py-3 px-4 bg-gray-50">Condition</th>
+                  <th className="py-3 px-4 bg-gray-50">Age Diagnosed</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dummyFamilyHistory.map((rec, idx) => (
+                  <tr key={idx} className="border-t hover:bg-gray-50 transition">
+                    <td className="py-2 px-4">{rec.relation}</td>
+                    <td className="py-2 px-4">{rec.condition}</td>
+                    <td className="py-2 px-4">{rec.ageDiagnosed}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        {tab === "social" && (
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full text-left border-separate min-w-[700px]">
+              <thead>
+                <tr>
+                  <th className="py-3 px-4 bg-gray-50">Habit</th>
+                  <th className="py-3 px-4 bg-gray-50">Status</th>
+                  <th className="py-3 px-4 bg-gray-50">Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dummySocialHistory.map((rec, idx) => (
+                  <tr key={idx} className="border-t hover:bg-gray-50 transition">
+                    <td className="py-2 px-4">{rec.habit}</td>
+                    <td className="py-2 px-4">{rec.status}</td>
+                    <td className="py-2 px-4">{rec.details}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
       <div className="bg-white rounded-lg p-6 shadow">
