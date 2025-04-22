@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const dummyEMR = [
   {
-    patient: 'James Wilson',
+    patient: 'Prinkesh Jha',
     dob: '1980-05-15',
     gender: 'Male',
     id: 'P-1234',
@@ -16,14 +16,14 @@ const dummyEMR = [
     chronic: ['Hypertension', 'Type 2 Diabetes'],
     recent: [
       {
-        doctor: 'Dr. Sarah Johnson',
+        doctor: 'Dr. Sarah ',
         date: '2023-04-15',
         diagnosis: 'Unstable angina',
         notes: 'Chest pain and shortness of breath',
         department: 'Cardiology'
       },
       {
-        doctor: 'Dr. Sarah Johnson',
+        doctor: 'Dr. Anshumaan Saraf',
         date: '2023-05-20',
         diagnosis: 'Coronary artery disease',
         notes: 'Follow-up for unstable angina',

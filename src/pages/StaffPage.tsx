@@ -6,10 +6,10 @@ import StaffStatusDropdown from "@/components/StaffStatusDropdown";
 import { useState } from "react";
 
 const initialStaff = [
-  { id: 1, name: "Dr. Sarah Johnson", role: "Doctor", specialization: "Cardiology", status: "Active" },
+  { id: 1, name: "Dr. Sarah ", role: "Doctor", specialization: "Cardiology", status: "Active" },
   { id: 2, name: "Nina Patel", role: "Staff", specialization: "Nursing", status: "On Leave" },
-  { id: 3, name: "Mark Lee", role: "Staff", specialization: "Reception", status: "Inactive" },
-  { id: 4, name: "Emily Davis", role: "Doctor", specialization: "Pediatrics", status: "Active" }
+  { id: 3, name: "Ashwin JSoeph", role: "Staff", specialization: "Reception", status: "Inactive" },
+  { id: 4, name: "Surendra Kumar", role: "Doctor", specialization: "Pediatrics", status: "Active" }
 ];
 const access = [
   { role: "Doctor", permissions: ["View EMR", "Prescribe", "View Lab Reports"] },

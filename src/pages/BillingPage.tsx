@@ -58,7 +58,7 @@ const BillingPage = () => (
           </li>
           <li className="p-3 bg-gray-100 rounded flex justify-between items-center">
             <div>
-              Claim #CL-002 • Patient: Jane Smith • Submitted: 2025-04-19
+              Claim #CL-002 • Patient: Anshumaan Saraf • Submitted: 2025-04-19
             </div>
             <Badge variant="secondary">Pending</Badge>
           </li>

@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 const dummyPatients = [
   {
     id: "PT-2025-12345",
-    name: "John Doe",
+    name: "Aryan",
     dob: "1985-05-15",
     gender: "Male",
     status: "Active",
@@ -14,7 +14,7 @@ const dummyPatients = [
   },
   {
     id: "PT-2025-23456",
-    name: "Jane Smith",
+    name: "Smith",
     dob: "1990-10-20",
     gender: "Female",
     status: "Active",
@@ -23,7 +23,7 @@ const dummyPatients = [
   },
   {
     id: "PT-2025-34567",
-    name: "Robert Johnson",
+    name: "Preeti Nair",
     dob: "1978-03-08",
     gender: "Male",
     status: "Inactive",
@@ -35,7 +35,7 @@ const dummyPatients = [
 const recentActivity = [
   {
     patientId: "PT-2025-12345",
-    doctor: "Dr. Sarah Johnson",
+    doctor: "Dr. Sarah ",
     diagnosis: "Unstable angina",
     date: "2025-04-15",
     notes: "Chest pain and shortness of breath",
@@ -43,7 +43,7 @@ const recentActivity = [
   },
   {
     patientId: "PT-2025-23456",
-    doctor: "Dr. Sarah Johnson",
+    doctor: "Dr. Sarah ",
     diagnosis: "Coronary artery disease",
     date: "2025-04-20",
     notes: "Follow-up for unstable angina",

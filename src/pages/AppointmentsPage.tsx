@@ -14,38 +14,38 @@ const appointDates = [
     appointments: [
       {
         time: "09:00",
-        patient: "Olivia Garcia",
+        patient: "Aakansha Sharma",
         patientId: "P-1116",
         reason: "Follow-up",
         duration: "30 min",
-        doctor: "Dr. Sarah Johnson",
+        doctor: "Dr. Sarah ",
         doctorRole: "Cardiologist"
       },
       {
         time: "09:00",
-        patient: "Ethan Martin",
+        patient: "Apurv Kumar",
         patientId: "P-1931",
         reason: "Follow-up",
         duration: "60 min",
-        doctor: "Dr. Michael Chen",
+        doctor: "Dr. Anshumaan Saraf",
         doctorRole: "Neurologist"
       },
       {
         time: "09:15",
-        patient: "Daniel Johnson",
+        patient: "Venkatesh Aiyer",
         patientId: "P-1570",
         reason: "Lab Results",
         duration: "30 min",
-        doctor: "Dr. David Rodriguez",
+        doctor: "Dr. Sarah sharma",
         doctorRole: "Orthopedic Surgeon"
       },
       {
         time: "09:15",
-        patient: "James Wilson",
+        patient: "James ",
         patientId: "P-1397",
         reason: "Consultation",
         duration: "15 min",
-        doctor: "Dr. Emily Williams",
+        doctor: "Dr. Sarag",
         doctorRole: "Pediatrician"
       }
     ]
@@ -54,10 +54,9 @@ const appointDates = [
 
 const allDoctors = [
   "All Doctors",
-  "Dr. Sarah Johnson",
-  "Dr. Michael Chen",
-  "Dr. David Rodriguez",
-  "Dr. Emily Williams"
+  "Dr. Sarah ",
+  "Dr. AaKansha Sharma",
+  "Dr. Anshumaan Saraf"
 ];
 
 export default function AppointmentsPage() {
