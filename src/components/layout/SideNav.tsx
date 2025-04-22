@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -49,7 +50,7 @@ const SideNav: React.FC = () => {
       },
       {
         name: 'Medical Records',
-        path: '/medical-records',
+        path: '/emr',
         icon: FileText,
         roles: ['admin', 'doctor', 'staff'],
       },
