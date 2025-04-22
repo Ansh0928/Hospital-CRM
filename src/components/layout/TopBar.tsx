@@ -19,9 +19,7 @@ const TopBar: React.FC = () => {
   return (
     <header className="bg-white border-b border-gray-200 py-3 px-6 flex items-center justify-between">
       <div className="flex items-center space-x-4">
-        <h1 className="text-lg md:text-xl font-semibold text-medical-dark">
-          VitaCare Medical System
-        </h1>
+        {/* Removed system title */}
       </div>
       
       <div className="flex items-center gap-2 md:gap-4">

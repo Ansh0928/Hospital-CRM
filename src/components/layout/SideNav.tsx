@@ -98,11 +98,7 @@ const SideNav: React.FC = () => {
   return (
     <aside className="w-64 bg-white border-r border-gray-200 hidden md:block">
       <div className="flex flex-col h-full">
-        <div className="h-16 flex items-center justify-center border-b border-gray-200">
-          <h1 className="text-xl font-bold text-medical-primary">
-            Hospital Management System
-          </h1>
-        </div>
+        {/* Removed system title */}
         
         <div className="px-6 py-4 border-b border-gray-200">
           <p className="text-sm text-gray-500">Logged in as</p>
