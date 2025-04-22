@@ -11,8 +11,8 @@ const initialMedicines = [
   { id: "MED003", name: "Metformin", stock: 75, status: "In Stock", dosage: "850mg", supplier: "HealthMeds" }
 ];
 const dummyPrescriptions = [
-  { id: 1, patient: "John Doe", medicine: "Amoxicillin", dosage: "500mg", date: "2025-04-16", status: "Dispensed" },
-  { id: 2, patient: "Jane Smith", medicine: "Lisinopril", dosage: "10mg", date: "2025-04-19", status: "Pending" }
+  { id: 1, patient: "Anand", medicine: "Amoxicillin", dosage: "500mg", date: "2025-04-16", status: "Dispensed" },
+  { id: 2, patient: "Smith", medicine: "Lisinopril", dosage: "10mg", date: "2025-04-19", status: "Pending" }
 ];
 
 export default function PharmacyPage() {
