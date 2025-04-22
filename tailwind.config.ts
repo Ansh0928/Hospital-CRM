@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,12 +62,31 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Medical software specific colors
+				medical: {
+					primary: '#2C7BE5',
+					secondary: '#6E84A3',
+					success: '#00D97E',
+					warning: '#F6C343',
+					danger: '#E63757',
+					info: '#39BAD6',
+					light: '#F9FBFD',
+					dark: '#12263F',
+					blue: '#A7D3F5', // Main background color as specified
 				}
+			},
+			fontFamily: {
+				sans: ['Roboto', 'Inter', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			boxShadow: {
+				'soft': '0 2px 8px 0 rgba(0, 0, 0, 0.05)',
+				'card': '0 4px 15px rgba(0, 0, 0, 0.08)',
 			},
 			keyframes: {
 				'accordion-down': {
