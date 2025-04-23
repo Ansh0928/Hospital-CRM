@@ -8,11 +8,12 @@
 
 @layer base {
   :root {
-    --background: 210 75% 95%;  /* Soft Hospital Blue */
+    --background: 0 0% 96.1%; /* Light Grey (#F5F5F5) */
     --foreground: 222.2 84% 4.9%;
 
-    --card: 0 0% 100%;
+    --card: 0 0% 100%; /* White */
     --card-foreground: 222.2 84% 4.9%;
+
 
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;

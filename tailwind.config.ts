@@ -73,7 +73,7 @@ export default {
 					info: '#39BAD6',
 					light: '#F9FBFD',
 					dark: '#12263F',
-					blue: '#A7D3F5', // Main background color as specified
+					blue: '#F5F5F5', // Main background color as specified
 				}
 			},
 			fontFamily: {
