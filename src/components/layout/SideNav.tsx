@@ -12,7 +12,8 @@ import {
   Receipt, 
   ChartBar, 
   Shield, 
-  Home
+  Home,
+  Settings
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -77,6 +78,13 @@ const SideNav: React.FC = () => {
         path: '/lab-reports',
         icon: Receipt,
         roles: ['admin', 'doctor', 'lab'],
+      },
+      {
+        name: 'Machine Management',
+        path: '/machine-management',
+        icon: Settings,
+        roles: ['admin', 'doctor', 'lab'],
+        
       },
       {
         name: 'Analytics',
