@@ -52,9 +52,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         {/* Header */}
         <header className="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
           <div>
-            <h1 className="text-xl font-semibold text-gray-800">
-              Welcome to the VitaCare Medical System
-            </h1>
+            
           </div>
           <div className="flex items-center space-x-4">
             <div className="relative">
