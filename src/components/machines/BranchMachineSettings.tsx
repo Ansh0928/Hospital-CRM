@@ -137,8 +137,8 @@ const BranchMachineSettings = () => {
                 <TableRow>
                   <TableHead>Machine</TableHead>
                   <TableHead>Status</TableHead>
-                  <TableHead>Runtime (hrs)</TableHead>
-                  <TableHead>Downtime (hrs)</TableHead>
+                  <TableHead>Runtime (mins)</TableHead>
+                  <TableHead>Downtime (mins)</TableHead>
                   <TableHead>Last Updated</TableHead>
                 </TableRow>
               </TableHeader>
