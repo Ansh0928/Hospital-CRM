@@ -1,22 +1,37 @@
-
 import PageHeader from "@/components/ui/PageHeader";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import AddMedicineModal from "@/components/AddMedicineModal";
 import { useState } from "react";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 const initialMedicines = [
   { id: "MED001", name: "Amoxicillin", stock: 150, status: "In Stock", dosage: "500mg", supplier: "MedSupply Inc." },
   { id: "MED002", name: "Lisinopril", stock: 0, status: "Out of Stock", dosage: "10mg", supplier: "PharmaDirect" },
   { id: "MED003", name: "Metformin", stock: 75, status: "In Stock", dosage: "850mg", supplier: "HealthMeds" }
 ];
-const dummyPrescriptions = [
-  { id: 1, patient: "Anand", medicine: "Amoxicillin", dosage: "500mg", date: "2025-04-16", status: "Dispensed" },
-  { id: 2, patient: "Smith", medicine: "Lisinopril", dosage: "10mg", date: "2025-04-19", status: "Pending" }
-];
 
 export default function PharmacyPage() {
   const [medicines, setMedicines] = useState(initialMedicines);
+  const [prescriptions, setPrescriptions] = useState([
+    { id: 1, patient: "Anand", medicine: "Amoxicillin", dosage: "500mg", date: "2025-04-16", status: "Dispensed" },
+    { id: 2, patient: "Smith", medicine: "Lisinopril", dosage: "10mg", date: "2025-04-19", status: "Pending" }
+  ]);
+  const [prescriptionForm, setPrescriptionForm] = useState({
+    patient: "",
+    medicine: "",
+    dosage: "",
+    date: "",
+  });
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleAddMedicine = (data: any) => {
     setMedicines([
@@ -30,6 +45,17 @@ export default function PharmacyPage() {
         supplier: data.supplier
       }
     ]);
+  };
+
+  const handleAddPrescription = () => {
+    const newPrescription = {
+      ...prescriptionForm,
+      id: prescriptions.length + 1,
+      status: "Pending"
+    };
+    setPrescriptions([...prescriptions, newPrescription]);
+    setPrescriptionForm({ patient: "", medicine: "", dosage: "", date: "" });
+    setIsDialogOpen(false);
   };
 
   return (
@@ -56,7 +82,10 @@ export default function PharmacyPage() {
                     <td className="py-2 px-4">{med.dosage}</td>
                     <td className="py-2 px-4">{med.stock}</td>
                     <td className="py-2 px-4">
-                      <Badge variant={med.status === "In Stock" ? "default" : "secondary"}>
+                      <Badge
+                        className="whitespace-nowrap px-3 py-1"
+                        variant={med.status === "In Stock" ? "default" : "secondary"}
+                      >
                         {med.status}
                       </Badge>
                     </td>
@@ -70,10 +99,12 @@ export default function PharmacyPage() {
             <AddMedicineModal onAdd={handleAddMedicine} />
           </div>
         </div>
+
+        {/* Prescriptions Panel */}
         <div className="bg-white rounded-lg p-6 shadow flex-1 min-w-[320px]">
           <span className="font-semibold text-lg mb-4 block">Recent Prescriptions</span>
           <ul className="space-y-3">
-            {dummyPrescriptions.map((rx) => (
+            {prescriptions.map((rx) => (
               <li key={rx.id} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg border">
                 <div>
                   <span className="font-medium">{rx.patient}</span>{" "}
@@ -84,12 +115,59 @@ export default function PharmacyPage() {
               </li>
             ))}
           </ul>
-          <Button className="w-full mt-4">Add Prescription</Button>
+
+          {/* Add Prescription Modal */}
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button className="w-full mt-4">Add Prescription</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add New Prescription</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <Label>Patient Name</Label>
+                  <Input
+                    value={prescriptionForm.patient}
+                    onChange={(e) => setPrescriptionForm({ ...prescriptionForm, patient: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label>Medicine</Label>
+                  <Input
+                    value={prescriptionForm.medicine}
+                    onChange={(e) => setPrescriptionForm({ ...prescriptionForm, medicine: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label>Dosage</Label>
+                  <Input
+                    value={prescriptionForm.dosage}
+                    onChange={(e) => setPrescriptionForm({ ...prescriptionForm, dosage: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label>Date</Label>
+                  <Input
+                    type="date"
+                    value={prescriptionForm.date}
+                    onChange={(e) => setPrescriptionForm({ ...prescriptionForm, date: e.target.value })}
+                  />
+                </div>
+                <Button className="w-full" onClick={handleAddPrescription}>
+                  Submit
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+
+          {/* Billing Summary */}
           <div className="mt-6">
             <h3 className="font-semibold mb-2">Billing Summary</h3>
             <div className="flex justify-between items-center bg-gray-50 p-4 rounded-lg">
-              <span>Total Dispensed: <b>{dummyPrescriptions.filter(r => r.status === "Dispensed").length}</b></span>
-              <span>Pending: <b>{dummyPrescriptions.filter(r => r.status !== "Dispensed").length}</b></span>
+              <span>Total Dispensed: <b>{prescriptions.filter(r => r.status === "Dispensed").length}</b></span>
+              <span>Pending: <b>{prescriptions.filter(r => r.status !== "Dispensed").length}</b></span>
             </div>
           </div>
         </div>
