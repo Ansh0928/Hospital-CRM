@@ -1,0 +1,55 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vite cache
+.vite/
+
+# Build output
+dist/
+
+# Prisma
+prisma/dev.db
+prisma/dev.db-journal
+prisma/migrations/
+*.sqlite
+*.sqlite-journal
+
+# Generated Prisma Client (optional to ignore if using TypeScript)
+# Uncomment if you do NOT want to track the generated client
+# @prisma/client/
+
+# Environment variables
+.env
+.env.*.local
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Optional: TypeScript cache
+*.tsbuildinfo
+
+# Optional: Lint cache
+.eslintcache
+
+# Optional: Coverage reports
+coverage/
+
+# Optional: log files
+*.log
+
+/generated/prisma

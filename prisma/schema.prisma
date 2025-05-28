@@ -1,15 +1,88 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+
+model Patient {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  patientId        String   @unique // PT-2025-12345 format
+  name             String
+  dateOfBirth      DateTime
+  gender           String
+  bloodType        String
+  contact          String
+  email            String?
+  address          String?
+  emergencyContact String?
+  medicalHistory   String?
+  status           String   @default("Active")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  
+  // Relations
+  activities       Activity[]
+  appointments     Appointment[]
+  
+  @@map("patients")
+}
+
+model Doctor {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  speciality   String
+  department   String
+  contact      String?
+  email        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  // Relations
+  activities   Activity[]
+  appointments Appointment[]
+  
+  @@map("doctors")
+}
+
+model Activity {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  patientId   String   @db.ObjectId
+  doctorId    String   @db.ObjectId
+  diagnosis   String
+  notes       String?
+  department  String
+  date        DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  patient     Patient  @relation(fields: [patientId], references: [id])
+  doctor      Doctor   @relation(fields: [doctorId], references: [id])
+  
+  @@map("activities")
+}
+
+model Appointment {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  patientId   String   @db.ObjectId
+  doctorId    String   @db.ObjectId
+  date        DateTime
+  time        String
+  reason      String?
+  status      String   @default("Scheduled") // Scheduled, Completed, Cancelled
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  patient     Patient  @relation(fields: [patientId], references: [id])
+  doctor      Doctor   @relation(fields: [doctorId], references: [id])
+  
+  @@map("appointments")
 }
