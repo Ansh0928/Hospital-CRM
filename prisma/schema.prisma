@@ -11,27 +11,29 @@ datasource db {
 }
 
 model Patient {
-  id               String   @id @default(auto()) @map("_id") @db.ObjectId
-  patientId        String   @unique // PT-2025-12345 format
+  id               String     @id @default(auto()) @map("_id") @db.ObjectId
+  patientId        String     @unique
   name             String
   dateOfBirth      DateTime
   gender           String
+  status           String     @default("Active")
   bloodType        String
   contact          String
   email            String?
   address          String?
   emergencyContact String?
   medicalHistory   String?
-  status           String   @default("Active")
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
   
-  // Relations
+  // Relation to activities
   activities       Activity[]
   appointments     Appointment[]
   
   @@map("patients")
 }
+
+
 
 model Doctor {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
